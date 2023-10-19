@@ -11,7 +11,6 @@ class InitialViewController: UIViewController {
     // MARK: Properties
     var selectedColor = UIColor(_colorLiteralRed: 0.79, green: 0.9, blue: 0.99, alpha: 1.0)
 
-    
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +28,6 @@ class InitialViewController: UIViewController {
         // тут инициализируем экземпляр нашего делегата
         destinationViewController.delegate = self
     }
-
 }
 
 // MARK: - Setting View
@@ -54,14 +52,12 @@ private extension InitialViewController {
     }
 }
 
-
 // MARK: - Layout
 private extension InitialViewController {
     func setingLayout() {
         
     }
 }
-
 
 // MARK: - Subscribe delegate
 // Подписываемся под делегатом 

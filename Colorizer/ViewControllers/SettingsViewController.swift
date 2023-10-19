@@ -187,7 +187,6 @@ private extension SettingsViewController {
         }
     }
     
-    
     // FIXME: put in delegate
     func updateSliderValueByTextField() {
         if let text = redTextField.text, let value = Float(text) {
@@ -230,7 +229,6 @@ private extension SettingsViewController {
         ])
     }
 }
-
 
 // MARK: - TextField Delegate
 extension SettingsViewController: UITextFieldDelegate {
