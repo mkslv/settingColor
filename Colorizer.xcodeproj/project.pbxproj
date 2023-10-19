@@ -64,7 +64,7 @@
 				51D75EB62AE00F5E0009E504 /* SceneDelegate.swift */,
 				51F8F6CF2AE161EA0056E5D3 /* ViewControllers */,
 				512589D32AE0706300C9FD67 /* ColorTextField.swift */,
-				51F8F6D02AE17A9F0056E5D3 /* SettingsViewControllerDelegate.swift */,
+				51F8F6D22AE1D1000056E5D3 /* Protocols */,
 				51D75EBD2AE00F5F0009E504 /* Assets.xcassets */,
 				51D75EBF2AE00F5F0009E504 /* LaunchScreen.storyboard */,
 				51D75EC22AE00F5F0009E504 /* Info.plist */,
@@ -79,6 +79,14 @@
 				51F8F6CD2AE161E50056E5D3 /* InitialViewController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		51F8F6D22AE1D1000056E5D3 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				51F8F6D02AE17A9F0056E5D3 /* SettingsViewControllerDelegate.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
