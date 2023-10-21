@@ -7,9 +7,9 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController {
     // MARK: properties
-    var selectedColor = UIColor()
+    var selectedColor = UIColor(.indigo)
     weak var delegate: SettingViewControllerDelegate!
     private var activeTextField: UITextField?
     
@@ -100,7 +100,8 @@ private extension SettingsViewController {
     }
     
     func setupMainView() {
-        view.backgroundColor = .white
+        view.backgroundColor = Theme.mainColor
+        
         title = "Pick a screen color"
         
         redTextField.delegate = self
@@ -114,6 +115,9 @@ private extension SettingsViewController {
     
     func setupColorView() {
         colorView.backgroundColor = selectedColor
+        
+        colorView.layer.borderColor = Theme.accentColor.cgColor
+        colorView.layer.borderWidth = 1
         colorView.layer.cornerRadius = 15
     }
     
@@ -135,21 +139,20 @@ private extension SettingsViewController {
     }
     
     func setupSliders() {
-        let redComponent = selectedColor.cgColor.components?[0] ?? 0.0
-        let greenComponent = selectedColor.cgColor.components?[1] ?? 0.0
-        let blueComponent = selectedColor.cgColor.components?[2] ?? 0.0
-        
         redSlider.minimumTrackTintColor = .red
         redSlider.maximumTrackTintColor = .red.withAlphaComponent(0.3)
-        redSlider.value = Float(redComponent)
         
         greenSlider.minimumTrackTintColor = .systemGreen
         greenSlider.maximumTrackTintColor = .systemGreen.withAlphaComponent(0.3)
-        greenSlider.value = Float(greenComponent)
         
         blueSlider.minimumTrackTintColor = .systemBlue
         blueSlider.maximumTrackTintColor = .systemBlue.withAlphaComponent(0.3)
-        blueSlider.value = Float(blueComponent)
+        
+        let ciColor = CIColor(color: selectedColor)
+        
+        redSlider.value = Float(ciColor.red)
+        greenSlider.value = Float(ciColor.green)
+        blueSlider.value = Float(ciColor.blue)
         
         [redSlider, greenSlider, blueSlider].forEach { slider in
             slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
@@ -251,6 +254,25 @@ extension SettingsViewController: UITextFieldDelegate {
     
     // Implement UITextFieldDelegate method to track the active text fields
     func textFieldDidBeginEditing(_ textField: UITextField) {
+        let keyboardToolbar = UIToolbar()
+        keyboardToolbar.sizeToFit() // По- сути добавляет над клавой бар
+        textField.inputAccessoryView = keyboardToolbar
+        
+        let doneButton = UIBarButtonItem(
+            barButtonSystemItem: .done,
+            target: textField,
+            action: #selector(resignFirstResponder)
+        )
+        
+        // TODO: Записать в нотс
+        let flexBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        keyboardToolbar.items = [flexBarButtonItem, doneButton]
+        
         activeTextField = textField
     }
 
@@ -261,3 +283,5 @@ extension SettingsViewController: UITextFieldDelegate {
         setupTextFieldsValue()
     }
 }
+
+
