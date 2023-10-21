@@ -7,9 +7,8 @@
 
 import UIKit
 
-class InitialViewController: UIViewController {
+final class InitialViewController: UIViewController {
     // MARK: Properties
-    var selectedColor = UIColor(_colorLiteralRed: 0.79, green: 0.9, blue: 0.99, alpha: 1.0)
 
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -22,7 +21,7 @@ class InitialViewController: UIViewController {
     @objc
     func settingButtonTapped() {
         let destinationViewController = SettingsViewController()
-        destinationViewController.selectedColor = selectedColor
+        destinationViewController.selectedColor = view.backgroundColor! // FIXME: Force unwrap
         navigationController?.pushViewController(destinationViewController, animated: true)
         
         // тут инициализируем экземпляр нашего делегата
@@ -33,17 +32,16 @@ class InitialViewController: UIViewController {
 // MARK: - Setting View
 private extension InitialViewController {
     func setupView() {
-        addSubviews()
+        setColorOfView()
         
         setupSetupColorButton()
-        setingLayout()
     }
 }
 
 // MARK: - Settings
 private extension InitialViewController {
-    func addSubviews() {
-        view.backgroundColor = selectedColor
+    func setColorOfView() {
+        view.backgroundColor = Theme.mainColor
     }
     
     func setupSetupColorButton() {
@@ -52,18 +50,10 @@ private extension InitialViewController {
     }
 }
 
-// MARK: - Layout
-private extension InitialViewController {
-    func setingLayout() {
-        
-    }
-}
-
 // MARK: - Subscribe delegate
 // Подписываемся под делегатом 
 extension InitialViewController: SettingViewControllerDelegate {
     func applyColor(color: UIColor) {
-        selectedColor = color
         view.backgroundColor = color
     }
 }

@@ -15,6 +15,7 @@
 		51D75EC12AE00F5F0009E504 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51D75EBF2AE00F5F0009E504 /* LaunchScreen.storyboard */; };
 		51F8F6CE2AE161E50056E5D3 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8F6CD2AE161E50056E5D3 /* InitialViewController.swift */; };
 		51F8F6D12AE17A9F0056E5D3 /* SettingsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8F6D02AE17A9F0056E5D3 /* SettingsViewControllerDelegate.swift */; };
+		51F8F6D42AE47A090056E5D3 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51F8F6D32AE47A090056E5D3 /* Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		51D75EC22AE00F5F0009E504 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51F8F6CD2AE161E50056E5D3 /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		51F8F6D02AE17A9F0056E5D3 /* SettingsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDelegate.swift; sourceTree = "<group>"; };
+		51F8F6D32AE47A090056E5D3 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				512589D32AE0706300C9FD67 /* ColorTextField.swift */,
 				51F8F6D22AE1D1000056E5D3 /* Protocols */,
 				51D75EBD2AE00F5F0009E504 /* Assets.xcassets */,
+				51F8F6D52AE47A190056E5D3 /* Models */,
 				51D75EBF2AE00F5F0009E504 /* LaunchScreen.storyboard */,
 				51D75EC22AE00F5F0009E504 /* Info.plist */,
 			);
@@ -87,6 +90,14 @@
 				51F8F6D02AE17A9F0056E5D3 /* SettingsViewControllerDelegate.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		51F8F6D52AE47A190056E5D3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51F8F6D32AE47A090056E5D3 /* Theme.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,6 +176,7 @@
 				51D75EB52AE00F5E0009E504 /* AppDelegate.swift in Sources */,
 				51D75EB72AE00F5E0009E504 /* SceneDelegate.swift in Sources */,
 				512589D42AE0706300C9FD67 /* ColorTextField.swift in Sources */,
+				51F8F6D42AE47A090056E5D3 /* Theme.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
