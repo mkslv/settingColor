@@ -8,30 +8,25 @@
 import UIKit
 
 struct Theme {
-    /// State of iOS theme osTheme: 1 - white; 2 - black.
-    static var osTheme: UIUserInterfaceStyle {
-        UIScreen.main.traitCollection.userInterfaceStyle
-    }
-    
-    /// Color of backgroubndColor
-    static var mainColor: UIColor {
-        switch osTheme.rawValue {
-        case 1:
+    static func getMainColor() -> UIColor {
+        switch UIScreen.main.traitCollection.userInterfaceStyle {
+        case .light, .unspecified:
             return .white
-        case 2:
+        case .dark:
             return .black
-        default:
-            return .systemMint
+        @unknown default:
+            fatalError()
         }
     }
     
-    /// Accent color of secondary elements
-    static var accentColor: UIColor {
-        switch osTheme.rawValue {
-        case 1:
+    static func getAccentColor() -> UIColor{
+        switch UIScreen.main.traitCollection.userInterfaceStyle {
+        case .light, .unspecified:
             return .black
-        default:
+        case .dark:
             return .white
+        @unknown default:
+            fatalError()
         }
     }
 }

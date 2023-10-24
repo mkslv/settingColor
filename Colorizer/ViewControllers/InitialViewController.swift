@@ -41,7 +41,7 @@ private extension InitialViewController {
 // MARK: - Settings
 private extension InitialViewController {
     func setColorOfView() {
-        view.backgroundColor = Theme.mainColor
+        view.backgroundColor = Theme.getMainColor()
     }
     
     func setupSetupColorButton() {

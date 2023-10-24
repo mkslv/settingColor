@@ -78,6 +78,7 @@ private extension SettingsViewController {
         setupLabels()
         setupTextFields()
         setupSliders()
+        setupSlidersValue()
         setupTextFieldsValue()
 
         createHorizontalContainer(with: redContainer, label: redLabel, textField: redTextField, slider: redSlider)
@@ -100,7 +101,7 @@ private extension SettingsViewController {
     }
     
     func setupMainView() {
-        view.backgroundColor = Theme.mainColor
+        view.backgroundColor = Theme.getMainColor()
         
         title = "Pick a screen color"
         
@@ -116,7 +117,7 @@ private extension SettingsViewController {
     func setupColorView() {
         colorView.backgroundColor = selectedColor
         
-        colorView.layer.borderColor = Theme.accentColor.cgColor
+        colorView.layer.borderColor = Theme.getAccentColor().cgColor
         colorView.layer.borderWidth = 1
         colorView.layer.cornerRadius = 15
     }
@@ -148,15 +149,17 @@ private extension SettingsViewController {
         blueSlider.minimumTrackTintColor = .systemBlue
         blueSlider.maximumTrackTintColor = .systemBlue.withAlphaComponent(0.3)
         
-        let ciColor = CIColor(color: selectedColor)
-        
-        redSlider.value = Float(ciColor.red)
-        greenSlider.value = Float(ciColor.green)
-        blueSlider.value = Float(ciColor.blue)
-        
         [redSlider, greenSlider, blueSlider].forEach { slider in
             slider.addTarget(self, action: #selector(sliderValueChanged), for: .valueChanged)
         }
+    }
+    
+    func setupSlidersValue() {
+        let ciColor = CIColor(color: selectedColor)
+        
+        redSlider.setValue(Float(ciColor.red), animated: true)
+        greenSlider.setValue(Float(ciColor.green), animated: true)
+        blueSlider.setValue(Float(ciColor.blue),animated: true)
     }
     
     func setupTextFieldsValue() {
@@ -193,13 +196,13 @@ private extension SettingsViewController {
     // FIXME: put in delegate
     func updateSliderValueByTextField() {
         if let text = redTextField.text, let value = Float(text) {
-            redSlider.value = value
+            redSlider.setValue(value, animated: true)
         }
         if let text = greenTextField.text, let value = Float(text) {
-            greenSlider.value = value
+            greenSlider.setValue(value, animated: true)
         }
         if let text = blueTextField.text, let value = Float(text) {
-            blueSlider.value = value
+            blueSlider.setValue(value, animated: true)
         }
     }
     
